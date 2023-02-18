@@ -5,6 +5,7 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -34,7 +35,32 @@ export default {
       return hex.length == 1 ? '0' + hex : hex;
     },
   },
+};/*
+export default {
+  name: "ColorPipetteTool",
+  data() {
+    return {
+      x: 0,
+      y: 0,
+      color: "#000000",
+      visible: true,
+    };
+  },
+  mounted() {
+    document.addEventListener("click", this.handleClickOutside);
+  },//destroyed est obsolete 
+  unmounted() {
+    document.removeEventListener("click", this.handleClickOutside);
+  },
+  methods: {
+    handleClickOutside(event) {
+      if (this.$el && !this.$el.contains(event.target)) {
+        this.visible = false;
+      }
+    },
+  },
 };
+*/
 </script>
 
 <style scoped>
@@ -48,4 +74,19 @@ export default {
   pointer-events: none;
   border: 2px solid white;
 }
+#pipette-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+#logo {
+  position: absolute;
+  align-items: center;
+  margin-top:0%;
+  max-width: 50px;
+  height: auto;
+  align-items: center;
+}
+
 </style>

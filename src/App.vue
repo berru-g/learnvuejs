@@ -1,22 +1,27 @@
 <template>
   <div id="app">
-    <img ref="image" src="./assets/image.jpg" @mousemove="movePipette" @click="clickPipette">
-    <Pipette v-if="pipetteActive" :x="pipetteX" :y="pipetteY" />
-    <button @click="togglePipette">Toggle Pipette</button>
+    <img id="logo" :style="{ left: left + 'px', top: top + 'px' }" src="./assets/pipette.gif">
+    <!--<button id="pipette-btn" @click="showPipette = !showPipette">Pipette</button>-->
+    <pipette v-if="showPipette"></pipette>
+    <button v-on:click="showPipette">Activer la pipette</button>
+    <ColorPipetteTool v-if="pipetteIsActive"/>
   </div>
 </template>
 
+
 <script>
-import Pipette from "./components/ColorPipetteTool.vue";
+
+import ColorPipetteTool from "./components/ColorPipetteTool.vue";
 
 export default {
-  name: "App",
+  name: "ColorPipetteTool",
   components: {
     ColorPipetteTool
   },
   data() {
     return {
       pipetteActive: false,
+      showPipette: false,
       pipetteX: 0,
       pipetteY: 0
     };
@@ -25,6 +30,13 @@ export default {
     togglePipette() {
       this.pipetteActive = !this.pipetteActive;
     },
+  /*  showPipette() {
+      const PipetteComponent = Vue.extend(Pipette);
+      const pipette = new PipetteComponent();
+      pipette.$mount();
+      document.body.appendChild(pipette.$el);
+    },*/
+
     movePipette(event) {
       if (this.pipetteActive) {
         this.pipetteX = event.clientX;
