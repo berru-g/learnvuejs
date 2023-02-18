@@ -4,7 +4,7 @@
     <!--<button id="pipette-btn" @click="showPipette = !showPipette">Pipette</button>-->
     <pipette v-if="showPipette"></pipette>
     <button v-on:click="showPipette">Activer la pipette</button>
-    <ColorPipetteTool v-if="pipetteIsActive"/>
+    <ColorPipetteTool v-if="pipetteActive"/>
   </div>
 </template>
 
